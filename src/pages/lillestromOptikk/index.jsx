@@ -21,7 +21,7 @@ export default function LillestromOptikk() {
             transition={{ delay: 0.5, duration: 0.5 }}
           >
             <img
-              src="/projects/lillestromOptikk/lillestromWeb2.jpg"
+              src="/dist/projects/lillestromOptikk/lillestromWeb2.jpg"
               alt="Web mockup"
             />
           </m.div>
@@ -60,7 +60,7 @@ export default function LillestromOptikk() {
               hvert fall Ø for Øystein, optikeren hos Lillestrøm Optikk.
             </p>
             <img
-              src="/public/projects/lillestromOptikk/lillestrom-logoelement.jpg"
+              src="/dist/projects/lillestromOptikk/lillestrom-logoelement.jpg"
               className="w-1/2"
             />
           </div>
@@ -69,7 +69,7 @@ export default function LillestromOptikk() {
         <section className="flex flex-col gap-12">
           <div>
             <h2>Nettside</h2>
-            <img src="/public/projects/lillestromOptikk/web1.jpg" />
+            <img src="/dist/projects/lillestromOptikk/web1.jpg" />
           </div>
           <div>
             <h3>Bygget med</h3>
@@ -85,7 +85,7 @@ export default function LillestromOptikk() {
             tekster gå på bekostning av hva butikken først og fremst gjør; å
             være autorisert helsepersonell som utfører synsundersøkelser.
           </p>
-          <img src="/public/projects/lillestromOptikk/lillestrom-fonts.jpg" />
+          <img src="/dist/projects/lillestromOptikk/lillestrom-fonts.jpg" />
           <p>
             I tillegg til å design og utvikling, har jeg skrevet all tekst. Med
             trygge skrifttyper, kontrast og god fontstørrelse håper jeg brukere
