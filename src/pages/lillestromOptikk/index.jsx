@@ -99,11 +99,11 @@ export default function LillestromOptikk() {
           </div>
           <div className="w-3/4 relative">
             <img
-              src="/projects/lillestromOptikk/lillestrom-fasade3.jpg"
+              src="/dist/projects/lillestromOptikk/lillestrom-fasade3.jpg"
               className=""
             />
             <img
-              src="/projects/lillestromOptikk/lillestrom-fasade2.jpg"
+              src="/dist/projects/lillestromOptikk/lillestrom-fasade2.jpg"
               className="w-2/3 absolute top-3/4 left-1/2"
             />
           </div>
