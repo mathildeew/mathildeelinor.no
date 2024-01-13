@@ -36,11 +36,19 @@ export default function LillestromOptikk() {
             </p>
           </div>
 
-          <div>
-            <h2>Nettside</h2>
-            <a href="https://www.lillestromoptikk.no">
-              www.lillestromoptikk.no
-            </a>
+          <div className="flex flex-col w-auto gap-10 md:flex-row md:gap-16">
+            <div>
+              <h2>Nettside</h2>
+              <a href="https://www.lillestromoptikk.no">
+                www.lillestromoptikk.no
+              </a>
+            </div>
+            <div>
+              <h2>GitHub</h2>
+              <a href="https://github.com/mathildeew/lillestromoptikk">
+                https://github.com/mathildeew/lillestromoptikk
+              </a>
+            </div>
           </div>
           <img
             src="/dist/projects/lillestromOptikk/lillestromoptikk-banner.png"
