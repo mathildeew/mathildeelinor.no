@@ -1,10 +1,8 @@
 # Mathilde Elinor | Portfolio
 
-My personal website & portfolio.
+[Besøk](https://www.mathildeelinor.no)
 
-[Visit site](https://www.mathildeelinor.no)
-
-## Built with
+## Bygget med
 
 - React + Vite
 - Tailwind CSS
