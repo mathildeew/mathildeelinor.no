@@ -43,7 +43,7 @@ export default function Header() {
           }`}
         >
           <div className="pt-32 pr-8 z-30 flex flex-col gap-16 ">
-            <ul className="text-end flex flex-col gap-5">
+            <ul className="text-end flex flex-col gap-8">
               <li>
                 <Link
                   to="/"
@@ -61,6 +61,15 @@ export default function Header() {
                   className="text-secondary text-3xl hover:relative hover:left-1 hover:italic"
                 >
                   CV
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/digital-soppelkasse"
+                  onClick={() => setShowMenu(false)}
+                  className="text-secondary text-3xl hover:relative hover:left-1 hover:italic"
+                >
+                  Digital søppelkasse
                 </Link>
               </li>
             </ul>
