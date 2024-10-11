@@ -4,11 +4,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#39469B",
+        primary: "#002FA7",
         secondary: "#F4E6D7",
       },
       fontFamily: {
-        serif: ["Fromage, serif"],
+        serif: ["norman-variable, serif"],
         sans: ["Montserrat, sans-serif"],
       },
       fontSize: {

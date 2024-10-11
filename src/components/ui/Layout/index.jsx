@@ -8,7 +8,7 @@ export default function Layout() {
     <>
       <m.div
         initial={{
-          background: "#39469B",
+          background: "#002FA7",
           width: "100vw",
           height: "100vh",
           position: "absolute",
@@ -18,7 +18,7 @@ export default function Layout() {
         transition={{ delay: 0.2, duration: 0.5, ease: "easeInOut" }}
       ></m.div>
       <Header />
-      <main className="w-fit mx-auto py-20">
+      <main className="w-fit mx-auto">
         <Outlet />
       </main>
       <Footer />
