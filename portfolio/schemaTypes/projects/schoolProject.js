@@ -10,6 +10,13 @@ const schoolProject = {
       validation: (rule) => rule.required(),
     },
     {
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      validation: (rule) => rule.required(),
+      options: {source: 'title'},
+    },
+    {
       name: 'assignment',
       title: 'Oppgave',
       type: 'string',

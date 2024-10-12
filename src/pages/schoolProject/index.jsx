@@ -1,16 +1,15 @@
 import { useParams } from "react-router-dom";
 import { motion as m } from "framer-motion";
 import SEOHelmet from "../../components/SEOHelmet";
-import { schoolProjects } from "../../js/schoolProjects";
 
 export default function SchoolProject() {
-  const id = useParams();
-  const name = id.id;
-  const project = schoolProjects.find((project) => project.id === id.id);
+  // const id = useParams();
+  // const name = id.id;
+  // const project = schoolProjects.find((project) => project.id === id.id);
 
   return (
     <>
-      <SEOHelmet title={` | ${project.name} - ${project.title}`} content="" />
+      {/* <SEOHelmet title={` | ${project.name} - ${project.title}`} content="" />
       <section className="max-w-3xl flex flex-col gap-10 px-4">
         <m.h1
           animate={{ y: 0 }}
@@ -39,7 +38,7 @@ export default function SchoolProject() {
         </div>
         <p>{project.description}</p>
         <p>{project.languages}</p>
-      </section>
+      </section> */}
     </>
   );
 }
