@@ -5,8 +5,8 @@ import { motion as m } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { client } from "../../../../api/sanity-utils";
 import apiQueries from "../../../../api/apiQueries";
-import { client, urlFor } from "../../../../api/sanity-utils";
 
 export default function Header() {
   const [showMenu, setShowMenu] = useState(false);
