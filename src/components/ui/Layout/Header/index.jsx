@@ -35,10 +35,6 @@ export default function Header() {
     fetchData();
   }, []);
 
-  const pdfUrl = `https://cdn.sanity.io/images/42ay9rkk`;
-
-  console.log(pdfUrl);
-
   return (
     <header className="w-full max-w-900 h-full flex justify-end mx-auto mb-16">
       <m.nav initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8, duration: 0.5, ease: "easeInOut" }} className="md-900:relative">
@@ -53,9 +49,9 @@ export default function Header() {
                 </Link>
               </li>
               <li>
-                {/* <Link to={pdfUrl} target="_blank" onClick={() => setShowMenu(false)} className="text-secondary text-3xl hover:relative hover:left-1 hover:italic">
+                <Link to={data.cv} target="_blank" onClick={() => setShowMenu(false)} className="text-secondary text-3xl hover:relative hover:left-1 hover:italic">
                   CV
-                </Link> */}
+                </Link>
               </li>
             </ul>
 
