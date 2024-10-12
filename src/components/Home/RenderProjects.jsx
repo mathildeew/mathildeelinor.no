@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { motion as m } from "framer-motion";
 import { client } from "../../api/sanity-utils";
 import apiQueries from "../../api/apiQueries";
 
@@ -9,7 +10,7 @@ export default function RenderProjects() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await client.fetch(apiQueries().project);
+        const data = await client.fetch(apiQueries().projects);
         setProjects(data);
       } catch (error) {
         console.error("Error fetching data:", error);

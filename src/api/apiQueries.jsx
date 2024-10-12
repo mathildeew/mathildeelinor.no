@@ -6,7 +6,7 @@ const apiQueries = (slug) => ({
     }
     `,
 
-  project: `
+  projects: `
     *[_type == "project" && title != "Lillestrøm Optikk - tidligere"] | order(_createdAt desc){
       title,
       "slug": slug.current,
@@ -18,7 +18,7 @@ const apiQueries = (slug) => ({
     }
     `,
 
-  schoolProject: `
+  schoolProjects: `
     *[_type == "school"] | order(_createdAt desc){
       title,
       "slug": slug.current,
@@ -30,6 +30,19 @@ const apiQueries = (slug) => ({
       demo,
       info,
       builtWith
+    }
+    `,
+
+  project: `
+    *[_type == "project" && slug.current == "${slug}"][0]{
+      title,
+      "slug": slug.current,
+      role,
+      resp,
+      "focusImage": focusImage.asset -> url,
+      github,
+      url,
+      content
     }
     `,
 });

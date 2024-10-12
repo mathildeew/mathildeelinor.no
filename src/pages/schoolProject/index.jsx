@@ -3,12 +3,14 @@ import { motion as m } from "framer-motion";
 import SEOHelmet from "../../components/SEOHelmet";
 
 export default function SchoolProject() {
-  // const id = useParams();
+  const slug = useParams();
+  console.log(slug);
   // const name = id.id;
   // const project = schoolProjects.find((project) => project.id === id.id);
 
   return (
     <>
+      <p>hhhh</p>
       {/* <SEOHelmet title={` | ${project.name} - ${project.title}`} content="" />
       <section className="max-w-3xl flex flex-col gap-10 px-4">
         <m.h1

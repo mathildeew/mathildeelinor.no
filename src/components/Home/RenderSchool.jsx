@@ -9,7 +9,7 @@ export default function RenderSchoolProjects() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await client.fetch(apiQueries().schoolProject);
+        const data = await client.fetch(apiQueries().schoolProjects);
         setProjects(data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -24,7 +24,7 @@ export default function RenderSchoolProjects() {
       <h2>Skolearbeider</h2>
       {projects.map((project, index) => (
         <div key={index} className="flex flex-col gap-2">
-          <Link to={`/prosjekter/${project.slug}`} className="overflow-hidden ">
+          <Link to={`/prosjekter/skolearbeid-${project.slug}`} className="overflow-hidden ">
             <img src={project.focusImage} alt={project.name} className="w-full  transition-all duration-300 ease-in-out hover:scale-105" />
           </Link>
           <h3>{project.assignment}</h3>

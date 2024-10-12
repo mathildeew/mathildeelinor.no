@@ -17,6 +17,13 @@ const project = {
       options: {source: 'title'},
     },
     {
+      name: 'role',
+      title: 'Rolle',
+      type: 'text',
+      rows: 1,
+      validation: (rule) => rule.required(),
+    },
+    {
       name: 'resp',
       title: 'Ansvar',
       type: 'text',

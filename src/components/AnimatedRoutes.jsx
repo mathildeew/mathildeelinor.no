@@ -4,8 +4,8 @@ import { useEffect } from "react";
 import Home from "../pages/Home";
 import Layout from "./ui/Layout";
 import NotFound from "../pages/NotFound";
-import LillestromOptikk from "../pages/lillestromOptikk";
 import SchoolProject from "../pages/schoolProject";
+import Projects from "../pages/Projects";
 
 export default function AnimatedRoutes() {
   const location = useLocation();
@@ -22,10 +22,10 @@ export default function AnimatedRoutes() {
     <AnimatePresence>
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Layout />}>
-          <Route pat="*" element={<NotFound />} />
+          <Route path="*" element={<NotFound />} />
           <Route index element={<Home />} />
-          <Route path="lillestrom-optikk" element={<LillestromOptikk />} />
-          <Route path="skolearbeider/:id" element={<SchoolProject />} />
+          <Route path="prosjekter/:slug" element={<Projects />} />
+          <Route path="prosjekter/skolearbeid-:slug" element={<SchoolProject />} />
         </Route>
       </Routes>
     </AnimatePresence>
