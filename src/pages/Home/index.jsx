@@ -1,15 +1,17 @@
 import SEOHelmet from "../../components/SEOHelmet";
-import Projects from "../../components/Projects";
-import Hero from "../../components/Hero";
+import ProjectsGrid from "../../components/ProjectsGrid";
+import Hero from "../../components/Home/Hero";
+import ContactMe from "../../components/Home/Banner/ContactMe";
 
 export default function Home() {
   return (
     <>
-      <SEOHelmet title={""} />
+      <SEOHelmet title={"| Front-end utvikler & designer"} content={"Trenger du ny nettside? Jeg er alltid interessert i nye spennende prosjekter. Send en mail, så lager vi noe kult sammen!"} />
 
-      <div className="max-w-3xl flex flex-col items-center gap-24 px-4">
+      <div className="flex flex-col items-center gap-24">
         <Hero />
-        <Projects />
+        <ContactMe />
+        <ProjectsGrid />
       </div>
     </>
   );

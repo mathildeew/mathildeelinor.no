@@ -17,6 +17,18 @@ const apiQueries = (slug) => ({
       content
     }
     `,
+  project: `
+    *[_type == "project" && slug.current == "${slug}"][0]{
+      title,
+      "slug": slug.current,
+      role,
+      resp,
+      "focusImage": focusImage.asset -> url,
+      github,
+      url,
+      content
+    }
+    `,
 
   schoolProjects: `
     *[_type == "school"] | order(_createdAt desc){
@@ -33,16 +45,17 @@ const apiQueries = (slug) => ({
     }
     `,
 
-  project: `
-    *[_type == "project" && slug.current == "${slug}"][0]{
+  schoolProject: `
+    *[_type == "school" && slug.current == "${slug}"][0]{
       title,
       "slug": slug.current,
-      role,
-      resp,
+      assignment,
+      builtWith,
       "focusImage": focusImage.asset -> url,
+      "preview": preview.asset -> url,
       github,
-      url,
-      content
+      demo,
+      info
     }
     `,
 });

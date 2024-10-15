@@ -1,25 +1,21 @@
 import { motion as m } from "framer-motion";
 import { useState, useEffect } from "react";
-import { client } from "../../api/sanity-utils";
-import apiQueries from "../../api/apiQueries";
+import { client } from "../../../api/sanity-utils";
+import apiQueries from "../../../api/apiQueries";
 
 export default function Hero() {
   const [data, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const info = await client.fetch(apiQueries().constants);
-        setData(info);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
+      const info = await client.fetch(apiQueries().constants);
+      setData(info);
     };
     fetchData();
   }, []);
 
   return (
-    <section className="grid gap-16 overflow-hidden">
-      <m.h1 animate={{ y: 0 }} initial={{ y: "-100%" }} transition={{ delay: 0.5, duration: 0.5 }} className="text-home font-semibold tracking-wider md:text-8xl">
+    <section className="max-w-3xl px-4 grid gap-16 overflow-hidden">
+      <m.h1 animate={{ y: 0 }} initial={{ y: "-100%" }} transition={{ delay: 0.5, duration: 0.5 }} className="text-home md:text-8xl md:relative md:top-10">
         Mathilde
         <br />
         Elinor
@@ -31,7 +27,7 @@ export default function Hero() {
             Frontend utvikler & designer
           </m.h2>
           <m.p animate={{ y: 0 }} initial={{ y: "100%" }} transition={{ delay: 0.5, duration: 0.5 }} className="md:text-lg">
-            Jeg gir liv til idéer ved å skape solide, tilgjengelige og engasjerende produkter.
+            Jeg gir liv til idéer ved å skape solide, tilgjengelige og engasjerende nettsider.
           </m.p>
         </m.div>
         <m.div className="bg-primary w-72 h-96 flex flex-col justify-center items-center mx-auto rounded-blob animate-[morph_2.75s_linear_infinite]" animate={{ opacity: 1 }} initial={{ opacity: 0 }} transition={{ delay: 0.8, duration: 0.8 }}>
