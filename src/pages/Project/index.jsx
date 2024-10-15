@@ -8,6 +8,8 @@ import { portableTextComponent } from "../../components/PortableText";
 import apiQueries from "../../api/apiQueries";
 import SEOHelmet from "../../components/SEOHelmet";
 import useClient from "../../hooks/useClient";
+import Loader from "../../components/ui/Layout/Loader";
+import Error from "../../components/ui/Layout/Error";
 
 export default function Project() {
   const { slug } = useParams();
@@ -65,6 +67,9 @@ export default function Project() {
           </div>
         </>
       )}
+
+      {isLoading && <Loader />}
+      {isError && <Error />}
     </>
   );
 }
