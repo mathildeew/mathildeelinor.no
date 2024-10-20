@@ -1,3 +1,4 @@
+import { motion as m } from "framer-motion";
 import { useState } from "react";
 
 export default function ContactMe() {
@@ -7,7 +8,7 @@ export default function ContactMe() {
   const [coolMode, setCoolMode] = useState(false);
 
   return (
-    <section className="bg-primary w-full h-auto py-4 lg:py-10">
+    <m.section animate={{ opacity: 1 }} initial={{ opacity: 0 }} transition={{ delay: 0.5, duration: 0.8 }} className="bg-primary w-full h-auto py-4 lg:py-10">
       <div className=" grid justify-center px-4">
         <p className="text-3xl text-secondary font-serif leading-10 md:text-5xl lg:text-7xl md:leading-[80px] lg:leading-[100px] 2xl:text-[100px] 2xl:leading-[120px]">
           Trenger du ny{" "}
@@ -24,11 +25,11 @@ export default function ContactMe() {
           </a>{" "}
           så lager vi noe{" "}
           <span className="text-secondary" onMouseEnter={() => setCoolMode(true)} onMouseLeave={() => setCoolMode(false)}>
-            {coolMode ? "🫧 🥂 ✨ 🍦" : "kult"}
+            {coolMode ? "🫧 🥂 ✨ 🍦" : "flott"}
           </span>{" "}
           sammen.
         </p>
       </div>
-    </section>
+    </m.section>
   );
 }
