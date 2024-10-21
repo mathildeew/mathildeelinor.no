@@ -11,6 +11,7 @@ import apiQueries from "../../../../api/apiQueries";
 export default function Header() {
   const [showMenu, setShowMenu] = useState(false);
   const [data, setData] = useState([]);
+  const [disco, setDisco] = useState(false);
 
   function hideOnScroll() {
     if (window.scrollY > 3) {
@@ -36,8 +37,8 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="w-full max-w-900 h-full flex justify-end mx-auto mb-16 relative z-50">
-      <m.nav initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8, duration: 0.5, ease: "easeInOut" }} className="md-900:relative">
+    <header className="w-full max-w-900 h-full flex justify-end mx-auto mb-16 relative z-50  md-750:w-fit md-750:py-5">
+      <m.nav initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8, duration: 0.5, ease: "easeInOut" }} className="md-750:hidden">
         <FontAwesomeIcon aria-label="Åpne og lukke meny" size="2x" className={`p-1.5 relative top-5 right-5 z-20 transition-all duration-500 ease-in-out ${showMenu && "text-secondary rotate-90"}`} icon={faEllipsis} onClick={() => setShowMenu(!showMenu)} />
 
         <div className={`bg-primary w-full h-screen absolute right-0 z-10 flex justify-end transition-all duration-700 ease-in-out md-750:w-72 xl-1400:-left-8 ${showMenu ? "top-0 opacity-1" : "-top-[780px] opacity-0"}`}>
@@ -68,6 +69,18 @@ export default function Header() {
             </div>
           </div>
         </div>
+      </m.nav>
+
+      <m.nav initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8, duration: 0.5, ease: "easeInOut" }} className="hidden md-750:flex gap-10">
+        <Link to="/" x className="underline duration-150 ease-in-out hover:-skew-x-12 hover:font-semibold hover:translate-x-1">
+          Hjem
+        </Link>
+        <Link to={data.cv} target="_blank" className="underline duration-150 ease-in-out hover:-skew-x-12 hover:font-semibold hover:translate-x-1">
+          CV
+        </Link>
+        <Link to="/kontakt-meg" x className="underline duration-150 ease-in-out hover:-skew-x-12 hover:font-semibold hover:translate-x-1">
+          Kontakt meg
+        </Link>
       </m.nav>
     </header>
   );
