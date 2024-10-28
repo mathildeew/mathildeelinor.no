@@ -8,6 +8,7 @@ import Projects from "../pages/Projects";
 import Project from "../pages/Project";
 import SchoolProjects from "../pages/Projects/SchoolProjects";
 import SchoolProject from "../pages/schoolProject";
+import Guestbook from "../pages/Guestbook";
 
 export default function AnimatedRoutes() {
   const location = useLocation();
@@ -30,6 +31,7 @@ export default function AnimatedRoutes() {
           <Route path="prosjekter/:slug" element={<Project />} />
           <Route path="prosjekter/skolearbeider" element={<SchoolProjects />} />
           <Route path="prosjekter/skolearbeider/:slug" element={<SchoolProject />} />
+          <Route path="gjesteboka" element={<Guestbook />} />
         </Route>
       </Routes>
     </AnimatePresence>

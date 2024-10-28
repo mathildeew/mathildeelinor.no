@@ -72,13 +72,13 @@ export default function Header() {
       </m.nav>
 
       <m.nav initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8, duration: 0.5, ease: "easeInOut" }} className="hidden md-750:flex gap-10">
-        <Link to="/" x className="underline duration-150 ease-in-out hover:-skew-x-12 hover:font-semibold hover:translate-x-1">
+        <Link to="/" className="underline duration-150 ease-in-out hover:-skew-x-12 hover:font-semibold hover:translate-x-1">
           Hjem
         </Link>
         <Link to={data.cv} target="_blank" className="underline duration-150 ease-in-out hover:-skew-x-12 hover:font-semibold hover:translate-x-1">
           CV
         </Link>
-        <Link to="/kontakt-meg" x className="underline duration-150 ease-in-out hover:-skew-x-12 hover:font-semibold hover:translate-x-1">
+        <Link to="/kontakt-meg" className="underline duration-150 ease-in-out hover:-skew-x-12 hover:font-semibold hover:translate-x-1">
           Kontakt meg
         </Link>
       </m.nav>
