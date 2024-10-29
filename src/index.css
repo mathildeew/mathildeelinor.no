@@ -12,6 +12,7 @@
   }
 
   body {
+    box-sizing: border-box;
     color: theme(colors.primary);
     background-color: theme(colors.secondary);
     width: 100vw;
@@ -50,7 +51,6 @@
 
   a {
     text-decoration: none;
-    
   }
 
   h1,
@@ -74,4 +74,27 @@
   li {
     list-style: none;
   }
+
+  input:-internal-autofill-selected {
+    background-color: yellowgreen !important;
+  }
+
+  input:focus,
+  textarea:focus {
+    outline: none;
+  }
+
+  /* input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    -webkit-text-fill-color: #002fa7;
+    -webkit-box-shadow: 0 0 0px 1000px #f4e6d7;
+    transition: background-color 5000s ease-in-out 0s;
+  } */
 }
