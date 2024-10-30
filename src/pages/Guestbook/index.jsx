@@ -5,6 +5,17 @@ import RenderMessages from "../../components/Guestbook/RenderMessages";
 
 export default function Guestbook() {
   const [accepted, setAccepted] = useState(false);
+  const [token, setToken] = useState("");
+
+  useEffect(() => {
+    window.localStorage.setItem("token", "yoo");
+    window.localStorage.setItem("name", "Mathilde");
+    window.localStorage.setItem("emoji", "🪩");
+
+    const item = window.localStorage.getItem("token");
+    setToken(item);
+  });
+
   const { fetchApi, data: posts, isLoading, isError, errorMsg } = useApi();
 
   const getData = useCallback(async () => {
@@ -18,7 +29,7 @@ export default function Guestbook() {
   //   const imageUrl = `http://localhost:3000/api/messages/image/${post.fileId}
 
   return (
-    <section className="flex flex-col gap-8 mx-auto">
+    <section className="max-w-lg flex flex-col gap-10 px-4 mx-auto">
       {/* {!accepted && (
         <div>
           <div className="bg-gray-400 opacity-30 w-full h-screen absolute top-0 z-10"></div>
@@ -32,10 +43,9 @@ export default function Guestbook() {
           </div>
         </div>
       )} */}
-      <h1 className="text-6xl text-center md:text-9xl">Gjesteboka</h1>
-      <GuestBookForm />
+      <h1 className="text-4xl text-center md:text-6xl">Gjesteboka</h1>
+      {token === null ? <button className="bg-primary text-secondary px-1 py-2">Logg inn for å legge inn en melding</button> : <GuestBookForm />}
       <RenderMessages />
-
       {/* {posts.map((post, index) => (
         <div key={index} className="border-2 border-primary rounded-md">
           <img src={`http://localhost:3000/api/messages/image/${post.image}`} />

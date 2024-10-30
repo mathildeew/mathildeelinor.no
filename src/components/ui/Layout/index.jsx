@@ -18,7 +18,7 @@ export default function Layout() {
         transition={{ delay: 0.2, duration: 0.5, ease: "easeInOut" }}
       ></m.div>
       <Header />
-      <main className="w-fit mx-auto">
+      <main className="w-full mx-auto">
         <Outlet />
       </main>
       <Footer />

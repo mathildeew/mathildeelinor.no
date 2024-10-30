@@ -9,6 +9,8 @@ import Project from "../pages/Project";
 import SchoolProjects from "../pages/Projects/SchoolProjects";
 import SchoolProject from "../pages/schoolProject";
 import Guestbook from "../pages/Guestbook";
+import Register from "../pages/Guestbook/Register";
+import Login from "../pages/Guestbook/Login";
 
 export default function AnimatedRoutes() {
   const location = useLocation();
@@ -32,6 +34,8 @@ export default function AnimatedRoutes() {
           <Route path="prosjekter/skolearbeider" element={<SchoolProjects />} />
           <Route path="prosjekter/skolearbeider/:slug" element={<SchoolProject />} />
           <Route path="gjesteboka" element={<Guestbook />} />
+          <Route path="gjesteboka/lag-bruker" element={<Register />} />
+          <Route path="gjesteboka/logg-inn" element={<Login />} />
         </Route>
       </Routes>
     </AnimatePresence>
