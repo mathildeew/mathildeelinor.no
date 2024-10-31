@@ -2,16 +2,13 @@ import { useEffect, useState, useCallback } from "react";
 import useApi from "../../hooks/useApi";
 import GuestBookForm from "../../components/Guestbook/form";
 import RenderMessages from "../../components/Guestbook/RenderMessages";
+import { Link } from "react-router-dom";
 
 export default function Guestbook() {
   const [accepted, setAccepted] = useState(false);
   const [token, setToken] = useState("");
 
   useEffect(() => {
-    window.localStorage.setItem("token", "yoo");
-    window.localStorage.setItem("name", "Mathilde");
-    window.localStorage.setItem("emoji", "🪩");
-
     const item = window.localStorage.getItem("token");
     setToken(item);
   });
@@ -44,7 +41,13 @@ export default function Guestbook() {
         </div>
       )} */}
       <h1 className="text-4xl text-center md:text-6xl">Gjesteboka</h1>
-      {token === null ? <button className="bg-primary text-secondary px-1 py-2">Logg inn for å legge inn en melding</button> : <GuestBookForm />}
+      {token === null ? (
+        <Link to="/gjesteboka/logg-inn" className="bg-primary text-secondary px-4 py-2 mx-auto">
+          Logg inn for å legge inn en melding
+        </Link>
+      ) : (
+        <GuestBookForm />
+      )}
       <RenderMessages />
       {/* {posts.map((post, index) => (
         <div key={index} className="border-2 border-primary rounded-md">

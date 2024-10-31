@@ -1,4 +1,6 @@
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImages } from "@fortawesome/free-solid-svg-icons";
@@ -12,6 +14,8 @@ const schema = yup.object({
 });
 
 export default function Login() {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -26,8 +30,17 @@ export default function Login() {
       password: formData.password,
     };
 
-    const response = await fetchApi(`http://localhost:3000/api/users`, "POST", data);
-    console.log(response);
+    const response = await fetchApi(`http://localhost:3000/api/login`, "POST", data);
+
+    if (response.status === 200) {
+      window.localStorage.setItem("name", response.data.name);
+      window.localStorage.setItem("token", response.data.token);
+      window.localStorage.setItem("emoji", response.data.emoji);
+
+      setTimeout(() => {
+        navigate("/gjesteboka");
+      }, 1000);
+    }
   };
 
   return (

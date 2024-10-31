@@ -5,8 +5,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImages, faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import * as yup from "yup";
 import useApi from "../../hooks/useApi";
+import { useNavigate } from "react-router-dom";
 
 export default function GuestBookForm() {
+  const navigate = useNavigate();
+
   const [showForm, setShowForm] = useState(true);
   const [imagePreview, setImagePreview] = useState(null);
   const schema = yup.object({
@@ -24,15 +27,23 @@ export default function GuestBookForm() {
 
   const onSubmit = async (formData) => {
     const data = new FormData();
-    data.append("name", window.localStorage.getItem("name"));
-    data.append("emoji", window.localStorage.getItem("emoji"));
     data.append("message", formData.message);
     if (formData.image[0]) {
       data.append("image", formData.image[0]);
     }
 
+    // console.log(formData);
+
     const response = await fetchApi(`http://localhost:3000/api/messages`, "POST", data);
     console.log(response);
+
+    if (response.status === 201) {
+      console.log("Melding sendt");
+
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+    }
   };
 
   const handleImageChange = (event) => {
@@ -50,10 +61,10 @@ export default function GuestBookForm() {
 
   return (
     <section className="w-full">
-      {/* <div className="flex gap-1 items-center cursor-pointer" onClick={() => setShowForm(!showForm)}>
+      <div className="flex gap-1 items-center cursor-pointer" onClick={() => setShowForm(!showForm)}>
         <h2 className="m-0">Legg igjen en melding</h2>
         <FontAwesomeIcon icon={showForm ? faChevronUp : faChevronDown} size="lg" />
-      </div> */}
+      </div>
       {showForm && (
         <form className="w-full flex flex-col gap-6 px-2 pt-4 pb-10 " onSubmit={handleSubmit(onSubmit)}>
           <div className="flex flex-col">

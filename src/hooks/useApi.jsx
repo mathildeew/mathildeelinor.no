@@ -13,6 +13,8 @@ import { useState } from "react";
  * }}
  */
 export default function useApi() {
+  const token = window.localStorage.getItem("token");
+
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(null);
@@ -20,8 +22,7 @@ export default function useApi() {
   const [errorMsg, setErrorMessage] = useState(null);
 
   const headers = {
-    "Content-Type": "application/json",
-    // Authorization: `Bearer ${token}`,
+    Authorization: `Bearer ${token}`,
   };
 
   /**
@@ -34,18 +35,20 @@ export default function useApi() {
    */
   async function fetchApi(url, method, data) {
     setIsLoading(true);
+
     try {
       const response = await axios({
         url: url,
         method: method,
         // Fjernet header for å kunne sende formData
-        // headers: headers,
+        headers: headers,
         data: data,
       });
       setData(response.data);
       setIsSuccess(true);
       setIsError(false);
       setErrorMessage(null);
+
       return response;
     } catch (error) {
       setErrorMessage(error.message);
