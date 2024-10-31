@@ -7,7 +7,7 @@ import * as yup from "yup";
 import useApi from "../../hooks/useApi";
 
 export default function GuestBookForm() {
-  const [showForm, setShowForm] = useState(false);
+  const [showForm, setShowForm] = useState(true);
   const [imagePreview, setImagePreview] = useState(null);
   const schema = yup.object({
     message: yup.string().required("Vennligst skriv en melding :)").min(5, "Meldingen må være over fem tegn"),
