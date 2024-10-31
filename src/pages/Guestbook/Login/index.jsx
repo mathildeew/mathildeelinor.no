@@ -26,8 +26,8 @@ export default function Login() {
       password: formData.password,
     };
 
-    // const response = await fetchApi(`http://localhost:3000/api/messages`, "GET", data);
-    console.log(data);
+    const response = await fetchApi(`http://localhost:3000/api/users`, "POST", data);
+    console.log(response);
   };
 
   return (
