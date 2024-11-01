@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import useApi from "../../hooks/useApi";
+import SEOHelmet from "../SEOHelmet";
 
 export default function RenderMessages() {
   const [selectedMsgType, setSelectedMsgType] = useState("allMsg");
@@ -28,6 +29,7 @@ export default function RenderMessages() {
   const handleDelete = async (id) => {
     if (window.confirm("Er du sikker på at du vil slette denne meldingen?")) {
       const response = await fetchApi(`http://localhost:3000/api/messages/${id}`, "DELETE");
+      console.log(response);
 
       // if (response.status === 200) {
       //   setDisplayedMessages(displayedMessages.filter((message) => message._id !== id));
@@ -40,7 +42,6 @@ export default function RenderMessages() {
 
   return (
     <section className="w-full">
-      {/* <h2>Meldinger</h2> */}
       {messages.length > 0 && userName && (
         <div className="flex gap-8">
           <div className="flex gap-2">
@@ -59,7 +60,7 @@ export default function RenderMessages() {
             <div key={index} className="w-full border border-primary px-2 pt-8 pb-4 relative">
               <div className="bg-primary w-fit flex gap-1 py-1 px-3 items-center absolute -top-5">
                 <p className="text-xl">🪩</p>
-                <p className="font-semibold text-secondary">{message.name}</p>
+                <p className="font-semibold text-secondary">{message.name.toUpperCase()}</p>
               </div>
 
               <img src={`http://localhost:3000/api/messages/image/${message.image}`} alt={`${message.name} sitt bilde`} className="w-full object-cover lg:h-72" />
@@ -78,7 +79,7 @@ export default function RenderMessages() {
           ))}
         </div>
       ) : (
-        <p>Ingen meldinger</p>
+        <p>Ingen meldinger å vise :(</p>
       )}
     </section>
   );

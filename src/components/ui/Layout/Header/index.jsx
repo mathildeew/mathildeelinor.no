@@ -54,7 +54,7 @@ export default function Header() {
 
             <div className="text-end flex flex-col justify-end gap-4 ">
               <span className="text-secondary font-sans text-xl uppercase">Si hei</span>
-              <Link to="mailto: hei@mathildeelinor.no" className="text-secondary font-sans  hover:italic">
+              <Link to="mailto: hei@mathildeelinor.no" className="text-secondary font-sans hover:italic">
                 hei@mathildeelinor.no
               </Link>
 

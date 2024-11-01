@@ -2,6 +2,7 @@ import SEOHelmet from "../../components/SEOHelmet";
 import ProjectsGrid from "../../components/ProjectsGrid";
 import Hero from "../../components/Home/Hero";
 import ContactMe from "../../components/Home/Banner/ContactMe";
+import { useLockBodyScroll } from "react-use";
 
 export default function Home() {
   return (

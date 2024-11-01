@@ -40,7 +40,6 @@ export default function useApi() {
       const response = await axios({
         url: url,
         method: method,
-        // Fjernet header for å kunne sende formData
         headers: headers,
         data: data,
       });
@@ -51,12 +50,12 @@ export default function useApi() {
 
       return response;
     } catch (error) {
-      setErrorMessage(error.message);
+      setErrorMessage(error.response.data.message);
       setIsError(true);
       setIsSuccess(false);
       setData([]);
 
-      return null;
+      return { status: error.response?.status, data: null, error: errorMsg };
     } finally {
       setIsLoading(false);
     }

@@ -7,6 +7,9 @@ import { faImages } from "@fortawesome/free-solid-svg-icons";
 import * as yup from "yup";
 import useApi from "../../../hooks/useApi";
 import { Link } from "react-router-dom";
+import { getErrorMessage } from "../../../utils/getErrorMessage";
+import SEOHelmet from "../../../components/SEOHelmet";
+import { useEffect } from "react";
 
 const schema = yup.object({
   name: yup.string().required("Vennligst fyll inn navn").min(3, "Navn må være over 3 tegn").max(30, "Navn må være under 30 tegn"),
@@ -39,35 +42,39 @@ export default function Login() {
 
       setTimeout(() => {
         navigate("/gjesteboka");
-      }, 1000);
+      }, 500);
     }
   };
 
   return (
-    <section className="w-full max-w-md flex flex-col gap-10 mx-auto px-4">
-      <form className="flex flex-col gap-6 border-2 py-10 px-2 border-primary md:px-10" onSubmit={handleSubmit(onSubmit)}>
-        <h1 className="text-3xl text-center">Logg inn</h1>
-        <div className="flex flex-col gap-1">
-          <label htmlFor="name">Navn</label>
-          <input name="name" type="text" className="bg-secondary w-full p-2 border border-primary " {...register("name", { required: true, type: "text" })} />
-          <p className="text-red-700">{errors.name?.message}</p>
-        </div>
-        <div className="flex flex-col gap-1">
-          <label htmlFor="password">Passord</label>
-          <input name="password" type="password" className="bg-secondary w-full p-2 border border-primary " {...register("password", { required: true, type: "text" })} />
-          <p className="text-red-700">{errors.password?.message}</p>
-        </div>
+    <>
+      <SEOHelmet title="Gjesteboka - logg inn" content="" />
 
-        <button type="submit" className="bg-primary text-secondary py-2">
-          {isLoading ? "Logger inn..." : isSuccess ? "Logget inn!" : "Logg inn"}
-        </button>
-        <div className="flex gap-1">
-          <p>Har du ikke en bruker?</p>
-          <Link to="/gjesteboka/lag-bruker" className="underline">
-            Lag en bruker
-          </Link>
-        </div>
-      </form>
-    </section>
+      <section className="w-full max-w-md flex flex-col gap-10 mx-auto px-4">
+        <form className="flex flex-col gap-6 border-2 py-10 px-2 border-primary md:px-10" onSubmit={handleSubmit(onSubmit)}>
+          <h1 className="text-3xl text-center">Logg inn</h1>
+          <div className="flex flex-col gap-1">
+            <label htmlFor="name">Navn</label>
+            <input name="name" type="text" className="bg-secondary w-full p-2 border border-primary " {...register("name", { required: true, type: "text" })} />
+            <p className="text-red-700">{errors.name?.message}</p>
+          </div>
+          <div className="flex flex-col gap-1">
+            <label htmlFor="password">Passord</label>
+            <input name="password" type="password" className="bg-secondary w-full p-2 border border-primary " {...register("password", { required: true, type: "text" })} />
+            <p className="text-red-700">{errors.password?.message}</p>
+          </div>
+          {isError && <p className="text-red-700">{getErrorMessage(errorMsg)}</p>}
+          <button type="submit" className="bg-primary text-secondary py-2">
+            {isLoading ? "Logger inn..." : "Logg inn"}
+          </button>
+          <div className="flex gap-1">
+            <p>Har du ikke en bruker?</p>
+            <Link to="/gjesteboka/lag-bruker" className="underline">
+              Lag en bruker
+            </Link>
+          </div>
+        </form>
+      </section>
+    </>
   );
 }
