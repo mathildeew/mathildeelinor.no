@@ -1,21 +1,12 @@
-import { useState, useEffect, useCallback } from "react";
-import useApi from "../../hooks/useApi";
-import SEOHelmet from "../SEOHelmet";
+import { useState, useEffect } from "react";
 
-export default function RenderMessages() {
-  const [selectedMsgType, setSelectedMsgType] = useState("allMsg");
-  const [displayedMessages, setDisplayedMessages] = useState([]);
-  const userName = window.localStorage.getItem("name");
-
-  const { fetchApi, data: messages, isLoading, isSuccess, isError, errorMsg } = useApi();
-
-  const getData = useCallback(async () => {
-    await fetchApi("http://localhost:3000/api/messages/");
+export default function RenderMessages({ messages, selectedMsgType, setSelectedMsgType, displayedMessages, setDisplayedMessages }) {
+  useEffect(() => {
+    setSelectedMsgType("allMsg");
+    setDisplayedMessages(messages);
   }, []);
 
-  useEffect(() => {
-    getData();
-  }, [getData]);
+  const userName = window.localStorage.getItem("name");
 
   useEffect(() => {
     if (userName && messages.length > 0) {
@@ -31,12 +22,12 @@ export default function RenderMessages() {
       const response = await fetchApi(`http://localhost:3000/api/messages/${id}`, "DELETE");
       console.log(response);
 
-      // if (response.status === 200) {
-      //   setDisplayedMessages(displayedMessages.filter((message) => message._id !== id));
-      //   console.log("Melding slettet");
-      // } else {
-      //   console.error("Feil ved sletting av melding:", response);
-      // }
+      if (response.status === 200) {
+        setDisplayedMessages(displayedMessages.filter((message) => message._id !== id));
+        console.log("Melding slettet");
+      } else {
+        console.error("Feil ved sletting av melding:", response);
+      }
     }
   };
 

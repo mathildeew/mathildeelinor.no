@@ -7,7 +7,7 @@ import * as yup from "yup";
 import useApi from "../../hooks/useApi";
 import { useNavigate } from "react-router-dom";
 
-export default function GuestBookForm() {
+export default function GuestBookForm({ messages, selectedMsgType, setSelectedMsgType, displayedMessages, setDisplayedMessages }) {
   const navigate = useNavigate();
 
   const [showForm, setShowForm] = useState(true);
@@ -36,11 +36,8 @@ export default function GuestBookForm() {
     console.log(response);
 
     // if (response.status === 201) {
-    //   console.log("Melding sendt");
+    //   setDisplayedMessages([...displayedMessages, response]);
 
-    //   setTimeout(() => {
-    //     window.location.reload();
-    //   }, 1000);
     // }
   };
 

@@ -7,12 +7,14 @@ import SEOHelmet from "../../components/SEOHelmet";
 import { useLockBodyScroll } from "react-use";
 
 export default function Guestbook() {
+  const [selectedMsgType, setSelectedMsgType] = useState("allMsg");
+  const [displayedMessages, setDisplayedMessages] = useState([]);
   const [accepted, setAccepted] = useState(false);
   const [token, setToken] = useState("");
 
   useEffect(() => {
     const acceptedValue = window.localStorage.getItem("accepted");
-    if (acceptedValue === "true") {
+    if (acceptedValue === true) {
       setAccepted(true);
     }
   }, []);
@@ -40,7 +42,7 @@ export default function Guestbook() {
     setToken(item);
   }, []);
 
-  const { fetchApi, data: posts, isLoading, isError, errorMsg } = useApi();
+  const { fetchApi, data: messages, isLoading, isError, errorMsg } = useApi();
 
   const getData = useCallback(async () => {
     await fetchApi("http://localhost:3000/api/messages/");
@@ -82,9 +84,9 @@ export default function Guestbook() {
             Logg inn for å legge inn en melding
           </Link>
         ) : (
-          <GuestBookForm />
+          <GuestBookForm messages={messages} selectedMsgType={selectedMsgType} setSelectedMsgType={setSelectedMsgType} displayedMessages={displayedMessages} setDisplayedMessages={setDisplayedMessages} />
         )}
-        <RenderMessages />
+        <RenderMessages messages={messages} selectedMsgType={selectedMsgType} setSelectedMsgType={setSelectedMsgType} displayedMessages={displayedMessages} setDisplayedMessages={setDisplayedMessages} />
       </section>
     </>
   );
