@@ -33,7 +33,7 @@ export default function Login() {
       password: formData.password,
     };
 
-    const response = await fetchApi(`http://localhost:3000/api/login`, "POST", data);
+    const response = await fetchApi(`https://mathildeelinor-gjesteboka.vercel.app/api/login`, "POST", data);
 
     if (response.status === 200) {
       window.localStorage.setItem("name", response.data.name);

@@ -32,13 +32,12 @@ export default function GuestBookForm({ messages, selectedMsgType, setSelectedMs
       data.append("image", formData.image[0]);
     }
 
-    const response = await fetchApi(`http://localhost:3000/api/messages`, "POST", data);
+    const response = await fetchApi(`https://mathildeelinor-gjesteboka.vercel.app/api/messages`, "POST", data);
     console.log(response);
 
-    // if (response.status === 201) {
-    //   setDisplayedMessages([...displayedMessages, response]);
-
-    // }
+    if (response.status === 201) {
+      setDisplayedMessages([response.data.post, ...displayedMessages]);
+    }
   };
 
   const handleImageChange = (event) => {

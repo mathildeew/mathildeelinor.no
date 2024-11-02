@@ -4,7 +4,6 @@ import GuestBookForm from "../../components/Guestbook/SendMessage";
 import RenderMessages from "../../components/Guestbook/RenderMessages";
 import { Link } from "react-router-dom";
 import SEOHelmet from "../../components/SEOHelmet";
-import { useLockBodyScroll } from "react-use";
 
 export default function Guestbook() {
   const [selectedMsgType, setSelectedMsgType] = useState("allMsg");
@@ -13,8 +12,11 @@ export default function Guestbook() {
   const [token, setToken] = useState("");
 
   useEffect(() => {
+    const item = window.localStorage.getItem("token");
     const acceptedValue = window.localStorage.getItem("accepted");
-    if (acceptedValue === true) {
+    setToken(item);
+
+    if (acceptedValue === "true") {
       setAccepted(true);
     }
   }, []);
@@ -25,27 +27,10 @@ export default function Guestbook() {
     }
   }, [accepted]);
 
-  useEffect(() => {
-    if (!accepted) {
-      document.documentElement.style.overflow = "hidden";
-    } else {
-      document.documentElement.style.overflow = "";
-    }
-
-    return () => {
-      document.documentElement.style.overflow = "";
-    };
-  }, []);
-
-  useEffect(() => {
-    const item = window.localStorage.getItem("token");
-    setToken(item);
-  }, []);
-
   const { fetchApi, data: messages, isLoading, isError, errorMsg } = useApi();
 
   const getData = useCallback(async () => {
-    await fetchApi("http://localhost:3000/api/messages/");
+    await fetchApi("https://mathildeelinor-gjesteboka.vercel.app/api/messages");
   }, [fetchApi]);
 
   useEffect(() => {
@@ -56,9 +41,9 @@ export default function Guestbook() {
     <>
       <SEOHelmet title={"Gjesteboka"} content="" />
 
-      {!accepted && (
-        <div className="w-full h-screen bg-gray-950  bg-opacity-20 flex justify-center absolute top-0">
-          <div className="w-full bg-white flex items-start justify-center absolute bottom-0 z-20">
+      {accepted !== true && (
+        <div className="w-full h-full bg-gray-950  bg-opacity-20 flex justify-center fixed top-0 z-50">
+          <div className="w-full bg-white flex items-start justify-center fixed bottom-0">
             <div className="max-w-7xl py-10 flex flex-col gap-3 px-4">
               <span>Velkommen til gjesteboka!</span>
               <p className="text-sm">
@@ -79,7 +64,7 @@ export default function Guestbook() {
 
       <section className="max-w-lg flex flex-col gap-10 px-4 mx-auto">
         <h1 className="text-4xl text-center md:text-6xl">Gjesteboka</h1>
-        {token === "" ? (
+        {!token ? (
           <Link to="/gjesteboka/logg-inn" className="bg-primary text-secondary px-4 py-2 mx-auto">
             Logg inn for å legge inn en melding
           </Link>
