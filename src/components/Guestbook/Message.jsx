@@ -3,7 +3,7 @@ import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
 import UpdateMessage from "../UpdateMessage";
 
 export const GuestBookMessage = ({ message, userName, setDisplayedMessages, displayedMessages, showUpdateForm, setShowUpdateForm, toggleUpdateForm, activeMenuId, setActiveMenuId, handleDelete }) => (
-  <div key={message._id} className="w-full border border-primary px-2 pt-8 pb-4 relative">
+  <div key={message._id} className="w-full border border-primary px-2 pt-8 pb-4 relative md:w-[500px]">
     <div className="bg-primary w-fit flex gap-1 py-1 px-3 items-center absolute -top-5">
       <p className="text-xl">{message.user.emoji}</p>
       <p className="font-semibold text-secondary">{message.user.name.charAt(0).toUpperCase() + message.user.name.slice(1)}</p>
