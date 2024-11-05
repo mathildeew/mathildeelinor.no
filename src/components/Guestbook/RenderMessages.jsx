@@ -1,26 +1,21 @@
 import { useState, useEffect } from "react";
 import { GuestBookMessage } from "./Message";
-import DeleteMessage from "../DeleteMessage";
 import { useMessages } from "./Context/MessageContext";
 
-export default function RenderMessages({ messages }) {
-  const { displayedMessages, setDisplayedMessages, refreshMessages } = useMessages();
+export default function RenderMessages() {
+  const userName = window.localStorage.getItem("name");
+  const { displayedMessages, refreshMessages, getUserMessages, handleDelete } = useMessages();
+
   const [selectedMsgType, setSelectedMsgType] = useState("allMsg");
   const [activeMenuId, setActiveMenuId] = useState(null);
   const [showUpdateForm, setShowUpdateForm] = useState({});
 
-  const userName = window.localStorage.getItem("name");
+  const messagesToDisplay = selectedMsgType === "myMsg" ? getUserMessages(userName) : displayedMessages;
 
   useEffect(() => {
-    const filteredMessages = selectedMsgType === "myMsg" ? messages.filter((message) => message.user.name.toLowerCase() === userName.toLowerCase()) : messages;
+    refreshMessages();
+  }, []);
 
-    setDisplayedMessages(filteredMessages);
-  }, [selectedMsgType, messages, userName, setDisplayedMessages]);
-
-  // Delete
-  const { handleDelete } = DeleteMessage({ displayedMessages, setDisplayedMessages });
-
-  //Update
   const toggleUpdateForm = (id) => {
     setShowUpdateForm((prev) => ({
       ...prev,
@@ -43,9 +38,9 @@ export default function RenderMessages({ messages }) {
         </div>
       )}
 
-      {displayedMessages.length > 0 ? (
+      {messagesToDisplay.length > 0 ? (
         <div className="flex flex-col gap-16 mt-12">
-          {displayedMessages.map((message) => (
+          {messagesToDisplay.map((message) => (
             <GuestBookMessage key={message._id} message={message} userName={userName} showUpdateForm={showUpdateForm} setShowUpdateForm={setShowUpdateForm} toggleUpdateForm={toggleUpdateForm} activeMenuId={activeMenuId} setActiveMenuId={setActiveMenuId} handleDelete={handleDelete} />
           ))}
         </div>

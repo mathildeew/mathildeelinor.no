@@ -9,6 +9,7 @@ import { useMessages } from "./Guestbook/Context/MessageContext";
 
 const schema = yup.object({
   newMessage: yup.string().notRequired(),
+  newImage: yup.mixed().notRequired(),
 });
 
 export default function UpdateMessage({ message, setShowUpdateForm }) {
@@ -21,14 +22,14 @@ export default function UpdateMessage({ message, setShowUpdateForm }) {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const onSubmit = async (formData, id) => {
+  const onSubmit = async (formData) => {
     const data = new FormData();
     data.append("message", formData.newMessage);
     if (formData.newImage) {
       data.append("image", formData.newImage[0]);
     }
 
-    const response = await fetchApi(`http://localhost:3000/api/messages/${id}`, "PUT", data);
+    const response = await fetchApi(`http://localhost:3000/api/messages/${message._id}`, "PUT", data);
 
     if (response.status === 200) {
       setShowUpdateForm(false);
@@ -37,14 +38,14 @@ export default function UpdateMessage({ message, setShowUpdateForm }) {
   };
 
   return (
-    <form className="w-full flex flex-col gap-6" onSubmit={handleSubmit((data) => onSubmit(data, message._id))}>
-      <TextareaField label="Melding" register={register} name="newMessage" rows="2" errors={errors} />
+    <form className="w-full flex flex-col gap-6" onSubmit={handleSubmit(onSubmit)}>
+      <TextareaField label="Melding" register={register} name="newMessage" rows="2" defaultValue={message.message} errors={errors} />
 
       <div className="flex flex-col gap-1">
         <div>
           <label htmlFor="newImage">Nytt bilde</label>
         </div>
-        <input name="newImage" type="file" accept="image/*" />
+        <input name="newImage" type="file" accept="image/*" {...register("newImage")} />
         <p className="text-red-700">{errors.newImage?.message}</p>
       </div>
 
