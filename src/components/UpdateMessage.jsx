@@ -5,12 +5,14 @@ import { getErrorMessage } from "../utils/getErrorMessage";
 import useApi from "../hooks/useApi";
 import { TextareaField } from "./Guestbook/Forms/TextareaField";
 import { ErrorMessage } from "./Guestbook/Forms/ErrorMessage";
+import { useMessages } from "./Guestbook/Context/MessageContext";
 
 const schema = yup.object({
   newMessage: yup.string().notRequired(),
 });
 
-export default function UpdateMessage({ message, setDisplayedMessages, displayedMessages, setShowUpdateForm }) {
+export default function UpdateMessage({ message, setShowUpdateForm }) {
+  const { refreshMessages } = useMessages();
   const { fetchApi, isLoading, isSuccess, isError, errorMsg } = useApi();
 
   const {
@@ -22,7 +24,7 @@ export default function UpdateMessage({ message, setDisplayedMessages, displayed
   const onSubmit = async (formData, id) => {
     const data = new FormData();
     data.append("message", formData.newMessage);
-    if (formData.newImage[0]) {
+    if (formData.newImage) {
       data.append("image", formData.newImage[0]);
     }
 
@@ -30,7 +32,7 @@ export default function UpdateMessage({ message, setDisplayedMessages, displayed
 
     if (response.status === 200) {
       setShowUpdateForm(false);
-      setDisplayedMessages((prevMessages) => prevMessages.map((msg) => (msg._id === id ? response.data : msg)));
+      await refreshMessages();
     }
   };
 

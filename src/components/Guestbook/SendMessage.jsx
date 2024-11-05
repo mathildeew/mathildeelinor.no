@@ -3,14 +3,18 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { TextareaField } from "./Forms/TextareaField";
+import { getErrorMessage } from "../../utils/getErrorMessage";
 import { ErrorMessage } from "./Forms/ErrorMessage";
 import useApi from "../../hooks/useApi";
+import { useMessages } from "./Context/MessageContext";
 
 const schema = yup.object({
   message: yup.string().required("Vennligst skriv en melding :)").min(5, "Meldingen må være over fem tegn"),
 });
 
-export default function GuestBookForm({ displayedMessages, setDisplayedMessages }) {
+export default function GuestBookForm() {
+  const { displayedMessages, setDisplayedMessages, refreshMessages } = useMessages();
+
   const {
     register,
     handleSubmit,
@@ -29,7 +33,7 @@ export default function GuestBookForm({ displayedMessages, setDisplayedMessages 
     const response = await fetchApi(`http://localhost:3000/api/messages/`, "POST", data);
 
     if (response.status === 201) {
-      setDisplayedMessages([response.data.post, ...displayedMessages]);
+      await refreshMessages();
     }
   };
 

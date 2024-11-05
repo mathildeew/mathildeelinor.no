@@ -6,13 +6,12 @@ import { Link } from "react-router-dom";
 import SEOHelmet from "../../components/SEOHelmet";
 
 export default function Guestbook() {
-  const [displayedMessages, setDisplayedMessages] = useState([]);
   const [accepted, setAccepted] = useState(false);
   const [token, setToken] = useState("");
 
   const handleLogout = () => {
-    window.localStorage.clear(); 
-    setToken(""); 
+    window.localStorage.clear();
+    setToken("");
   };
 
   useEffect(() => {
@@ -79,8 +78,8 @@ export default function Guestbook() {
           </Link>
         )}
 
-        {token && <GuestBookForm messages={messages} displayedMessages={displayedMessages} setDisplayedMessages={setDisplayedMessages} />}
-        <RenderMessages messages={messages} displayedMessages={displayedMessages} setDisplayedMessages={setDisplayedMessages} />
+        {token && <GuestBookForm messages={messages} />}
+        <RenderMessages messages={messages} />
       </section>
     </>
   );

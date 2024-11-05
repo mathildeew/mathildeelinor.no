@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { GuestBookMessage } from "./Message";
 import DeleteMessage from "../DeleteMessage";
+import { useMessages } from "./Context/MessageContext";
 
-export default function RenderMessages({ messages, displayedMessages, setDisplayedMessages }) {
+export default function RenderMessages({ messages }) {
+  const { displayedMessages, setDisplayedMessages, refreshMessages } = useMessages();
   const [selectedMsgType, setSelectedMsgType] = useState("allMsg");
   const [activeMenuId, setActiveMenuId] = useState(null);
   const [showUpdateForm, setShowUpdateForm] = useState({});
@@ -44,7 +46,7 @@ export default function RenderMessages({ messages, displayedMessages, setDisplay
       {displayedMessages.length > 0 ? (
         <div className="flex flex-col gap-16 mt-12">
           {displayedMessages.map((message) => (
-            <GuestBookMessage key={message._id} message={message} userName={userName} setDisplayedMessages={setDisplayedMessages} displayedMessages={displayedMessages} showUpdateForm={showUpdateForm} setShowUpdateForm={setShowUpdateForm} toggleUpdateForm={toggleUpdateForm} activeMenuId={activeMenuId} setActiveMenuId={setActiveMenuId} handleDelete={handleDelete} />
+            <GuestBookMessage key={message._id} message={message} userName={userName} showUpdateForm={showUpdateForm} setShowUpdateForm={setShowUpdateForm} toggleUpdateForm={toggleUpdateForm} activeMenuId={activeMenuId} setActiveMenuId={setActiveMenuId} handleDelete={handleDelete} />
           ))}
         </div>
       ) : (
