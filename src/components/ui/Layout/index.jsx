@@ -22,7 +22,7 @@ export default function Layout() {
         ></m.div>
       )}
       <Header />
-      <main className="w-full flex flex-col items-center">
+      <main className="w-full flex flex-col items-center mb-24">
         <Outlet />
       </main>
       <Footer />

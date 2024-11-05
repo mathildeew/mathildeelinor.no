@@ -47,16 +47,16 @@ export default function Project() {
 
               <section className="grid gap-4 lg:grid-cols-3">
                 <div>
-                  <h2 className="underline">Rolle</h2>
-                  <p>{project.role}</p>
-                </div>
-                <div>
                   <h2 className="underline">Ansvar</h2>
                   <p>{project.resp}</p>
                 </div>
                 <div>
                   <h2 className="underline">URL</h2>
                   <a href={project.url}>{project.url}</a>
+                </div>
+                <div>
+                  <h2 className="underline">GitHub</h2>
+                  <a href={project.github}>{project.github}</a>
                 </div>
               </section>
             </section>
