@@ -1,8 +1,10 @@
 import * as yup from "yup";
-import { useForm } from "react-hook-form";
 import { useNavigate, Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { InputField } from "../../../components/Guestbook/Forms/InputField";
 import { getErrorMessage } from "../../../utils/getErrorMessage";
+import { ErrorMessage } from "../../../components/Guestbook/Forms/ErrorMessage";
 import useApi from "../../../hooks/useApi";
 import SEOHelmet from "../../../components/SEOHelmet";
 
@@ -41,19 +43,10 @@ export default function Login() {
         <form className="flex flex-col gap-6 border-2 py-10 px-2 border-primary md:px-10" onSubmit={handleSubmit(onSubmit)}>
           <h1 className="text-3xl text-center">Logg inn</h1>
 
-          <div className="flex flex-col gap-1">
-            <label htmlFor="name">Navn</label>
-            <input name="name" type="text" className="bg-secondary w-full p-2 border border-primary " {...register("name", { required: true, type: "text" })} />
-            <p className="text-red-700">{errors.name?.message}</p>
-          </div>
+          <InputField label="Navn" register={register} name="name" errors={errors} />
+          <InputField label="Passord" register={register} name="password" errors={errors} type="password" />
 
-          <div className="flex flex-col gap-1">
-            <label htmlFor="password">Passord</label>
-            <input name="password" type="password" className="bg-secondary w-full p-2 border border-primary " {...register("password", { required: true, type: "text" })} />
-            <p className="text-red-700">{errors.password?.message}</p>
-          </div>
-
-          {isError && <p className="text-red-700">{getErrorMessage(errorMsg)}</p>}
+          <ErrorMessage message={isError ? getErrorMessage(errorMsg) : null} />
 
           <button type="submit" className="bg-primary text-secondary py-2">
             {isLoading ? "Logger inn..." : "Logg inn"}
