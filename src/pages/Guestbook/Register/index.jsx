@@ -27,7 +27,7 @@ export default function Register() {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const { fetchApi, isLoading, isError, errorMsg } = useApi();
+  const { fetchApi, isLoading, isSuccess, isError, errorMsg } = useApi();
 
   const onSubmit = async (formData) => {
     delete formData.passwordVal;
@@ -35,7 +35,9 @@ export default function Register() {
     const response = await fetchApi(`http://localhost:3000/api/users/`, "POST", formData);
 
     if (response.status === 201) {
-      navigate("/gjesteboka/logg-inn");
+      setTimeout(() => {
+        navigate("/gjesteboka/logg-inn");
+      }, 750);
     }
   };
 
@@ -56,7 +58,7 @@ export default function Register() {
           <ErrorMessage message={isError ? getErrorMessage(errorMsg) : null} />
 
           <button type="submit" className="bg-primary text-secondary py-2">
-            {isLoading ? "Lager bruker..." : "Lag bruker"}
+            {isLoading ? "Lager bruker..." : isSuccess ? "Bruker laget!" : "Lag bruker"}
           </button>
 
           <div className="flex gap-1">
