@@ -38,15 +38,11 @@ export default function RenderMessages() {
         </div>
       )}
 
-      {messagesToDisplay.length > 0 ? (
-        <div className="flex flex-col gap-16 mt-12">
-          {messagesToDisplay.map((message) => (
-            <GuestBookMessage key={message._id} message={message} userName={userName} showUpdateForm={showUpdateForm} setShowUpdateForm={setShowUpdateForm} toggleUpdateForm={toggleUpdateForm} activeMenuId={activeMenuId} setActiveMenuId={setActiveMenuId} handleDelete={handleDelete} />
-          ))}
-        </div>
-      ) : (
-        <p>Ingen meldinger å vise :(</p>
-      )}
+      <div className="flex flex-col gap-16 mt-12">
+        {messagesToDisplay.map((message) => (
+          <GuestBookMessage key={message._id} message={message} userName={userName} showUpdateForm={showUpdateForm} setShowUpdateForm={setShowUpdateForm} toggleUpdateForm={toggleUpdateForm} activeMenuId={activeMenuId} setActiveMenuId={setActiveMenuId} handleDelete={handleDelete} />
+        ))}
+      </div>
     </section>
   );
 }

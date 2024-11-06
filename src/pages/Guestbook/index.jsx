@@ -30,7 +30,7 @@ export default function Guestbook() {
     }
   }, [accepted]);
 
-  const { fetchApi, data: messages, isLoading, isError, errorMsg } = useApi();
+  const { fetchApi, data: messages, isLoading, isSuccess, isError, errorMsg } = useApi();
 
   const getData = useCallback(async () => {
     await fetchApi("https://mathildeelinor-gjesteboka.vercel.app/api/messages/");
@@ -83,7 +83,8 @@ export default function Guestbook() {
         </div>
 
         {token && <GuestBookForm messages={messages} />}
-        <RenderMessages messages={messages} />
+        {isLoading && <p className="mx-auto">Laster inn meldinger...</p>}
+        {isSuccess && <RenderMessages messages={messages} />}
       </section>
     </>
   );
