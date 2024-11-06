@@ -6,6 +6,7 @@ import Header from "./Header";
 export default function Layout() {
   const location = useLocation();
   const path = location.pathname;
+
   return (
     <>
       {path !== "/gjesteboka/logg-inn" && path !== "/gjesteboka/lag-bruker" && (
