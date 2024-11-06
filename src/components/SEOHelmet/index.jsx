@@ -4,7 +4,7 @@ export default function SEOHelmet({ title }) {
   return (
     <HelmetProvider>
       <Helmet>
-        <link rel="icon" type="image/svg+xml" href="/public/fav.png" />
+        <link rel="icon" type="image/svg+xml" href="/public/favicon.png" />
         <link rel="stylesheet" href="https://use.typekit.net/rkz6tdw.css" />
         <meta name="description" content="Design og utvikling. Kontakt: hei@mathildeelinor.no"></meta>
         <title>{title}</title>
