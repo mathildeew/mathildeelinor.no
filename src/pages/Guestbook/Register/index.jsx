@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { InputField } from "../../../components/Guestbook/Forms/InputField";
 import { EmojiSelection } from "../../../components/Guestbook/Forms/EmojiSelection";
-import { getErrorMessage } from "../../../utils/getErrorMessage";
+import { getErrorMessage } from "../../../components/Guestbook/utils/getErrorMessage";
 import { ErrorMessage } from "../../../components/Guestbook/Forms/ErrorMessage";
 import useApi from "../../../hooks/useApi";
 import SEOHelmet from "../../../components/SEOHelmet";

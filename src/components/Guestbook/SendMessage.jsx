@@ -2,7 +2,7 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { TextareaField } from "./Forms/TextareaField";
-import { getErrorMessage } from "../../utils/getErrorMessage";
+import { getErrorMessage } from "./utils/getErrorMessage";
 import { ErrorMessage } from "./Forms/ErrorMessage";
 import useApi from "../../hooks/useApi";
 import { useMessages } from "./Context/MessageContext";
