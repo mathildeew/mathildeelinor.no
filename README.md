@@ -1,9 +1,16 @@
 # Mathilde Elinor | Portfolio
 
-[Besøk](https://www.mathildeelinor.no)
+Min portefølje, med gjestebok og greier.
+
+## 📍Sjekk ut prosjektet her
+
+- [www.mathildeelinor.no](https://www.mathildeelinor.no)
+- [Backend kode til gjesteboka her](https://github.com/mathildeew/mathildeelinor.no-backend)
 
 ## Bygget med
 
-- React + Vite
+- React + React Router
 - Tailwind CSS
+- Sanity
+- React Hook Form & Yup
 - Framer Motion
