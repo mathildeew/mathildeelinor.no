@@ -5,7 +5,7 @@ export default function DeleteMessage({ displayedMessages, setDisplayedMessages 
 
   const handleDelete = async (id) => {
     if (window.confirm("Er du sikker på at du vil slette denne meldingen?")) {
-      const response = await fetchApi(`http://localhost:3000/api/messages/${id}`, "DELETE");
+      const response = await fetchApi(`https://mathildeelinor-gjesteboka.vercel.app/api/messages/${id}`, "DELETE");
 
       if (response.status === 200) {
         setDisplayedMessages(displayedMessages.filter((message) => message._id !== id));

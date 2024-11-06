@@ -8,7 +8,7 @@ export function MessageProvider({ children }) {
   const { fetchApi } = useApi();
 
   const refreshMessages = async () => {
-    const response = await fetchApi("http://localhost:3000/api/messages", "GET");
+    const response = await fetchApi("https://mathildeelinor-gjesteboka.vercel.app/api/messages", "GET");
     if (response.status === 200) {
       setDisplayedMessages(response.data);
     }
@@ -19,16 +19,15 @@ export function MessageProvider({ children }) {
   };
 
   const handleDelete = async (messageId) => {
-    const response = await fetchApi(`http://localhost:3000/api/messages/${messageId}`, "DELETE");
-
-    if (response.status === 200) {
-      setDisplayedMessages((prevMessages) => prevMessages.filter((message) => message._id !== messageId));
+    if (window.confirm("Er du sikker på at du vil slette denne meldingen?")) {
+      const response = await fetchApi(`https://mathildeelinor-gjesteboka.vercel.app/api/messages/${messageId}`, "DELETE");
+      if (response.status === 200) {
+        setDisplayedMessages((prevMessages) => prevMessages.filter((message) => message._id !== messageId));
+      } else {
+        console.log("Feil ved sletting av melding");
+      }
     }
   };
-
-  //   useEffect(() => {
-  //     refreshMessages();
-  //   }, []);
 
   return (
     <MessageContext.Provider

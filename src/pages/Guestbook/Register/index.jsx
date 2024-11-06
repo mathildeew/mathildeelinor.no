@@ -32,7 +32,7 @@ export default function Register() {
   const onSubmit = async (formData) => {
     delete formData.passwordVal;
 
-    const response = await fetchApi(`http://localhost:3000/api/users/`, "POST", formData);
+    const response = await fetchApi(`https://mathildeelinor-gjesteboka.vercel.app/api/users/`, "POST", formData);
 
     if (response.status === 201) {
       setTimeout(() => {

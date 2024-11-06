@@ -24,7 +24,7 @@ export default function RenderMessages() {
   };
 
   return (
-    <section className="w-full">
+    <section className="w-fit mx-auto">
       {userName && (
         <div className="flex gap-8">
           <div className="flex gap-2">

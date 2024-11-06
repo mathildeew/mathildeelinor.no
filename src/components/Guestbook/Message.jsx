@@ -32,7 +32,7 @@ export const GuestBookMessage = ({ message, userName, setDisplayedMessages, disp
 
     {showUpdateForm[message._id] && <UpdateMessage message={message} setDisplayedMessages={setDisplayedMessages} displayedMessages={displayedMessages} setShowUpdateForm={setShowUpdateForm} />}
 
-    {message.image && <img src={`http://localhost:3000/api/messages/image/${message.image}`} alt={`${message.user.name} sitt bilde`} className="w-full max-h-96 object-cover" />}
+    {message.image && <img src={`https://mathildeelinor-gjesteboka.vercel.app/api/messages/image/${message.image}`} alt={`${message.user.name} sitt bilde`} className="w-full max-h-96 object-cover" />}
     <div className="flex flex-col gap-4">
       <p>{message.message}</p>
       <div className="flex items-center justify-between">

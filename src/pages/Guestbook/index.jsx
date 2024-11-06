@@ -33,7 +33,7 @@ export default function Guestbook() {
   const { fetchApi, data: messages, isLoading, isError, errorMsg } = useApi();
 
   const getData = useCallback(async () => {
-    await fetchApi("http://localhost:3000/api/messages/");
+    await fetchApi("https://mathildeelinor-gjesteboka.vercel.app/api/messages/");
   }, [fetchApi]);
 
   useEffect(() => {
@@ -65,18 +65,22 @@ export default function Guestbook() {
         </div>
       )}
 
-      <section className="max-w-lg flex flex-col gap-10 px-4 mx-auto">
-        <h1 className="text-4xl text-center md:text-6xl">Gjesteboka</h1>
+      <section className="w-full flex flex-col justify-center gap-10 px-4">
+        <div className="w-full flex justify-center">
+          <div className="w-full flex flex-col gap-4 md:flex-row md:items-center md:justify-between md:mx-10 md:max-w-5xl">
+            <h1 className="text-4xl text-center md:text-6xl">Gjesteboka</h1>
 
-        {token ? (
-          <button className="border-2 border-primary px-4 py-2" onClick={handleLogout}>
-            Logg ut
-          </button>
-        ) : (
-          <Link to="/gjesteboka/logg-inn" className="bg-primary text-secondary px-4 py-2 mx-auto">
-            Logg inn for å legge inn en melding
-          </Link>
-        )}
+            {token ? (
+              <button className="border-2 border-primary px-4 py-2" onClick={handleLogout}>
+                Logg ut
+              </button>
+            ) : (
+              <Link to="/gjesteboka/logg-inn" className="bg-primary text-secondary px-4 py-2 mx-auto md:mx-0">
+                Logg inn for å legge inn en melding
+              </Link>
+            )}
+          </div>
+        </div>
 
         {token && <GuestBookForm messages={messages} />}
         <RenderMessages messages={messages} />

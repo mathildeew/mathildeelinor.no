@@ -25,7 +25,7 @@ export default function Login() {
   const { fetchApi, isLoading, isError, errorMsg } = useApi();
 
   const onSubmit = async (formData) => {
-    const response = await fetchApi(`http://localhost:3000/api/login`, "POST", formData);
+    const response = await fetchApi(`https://mathildeelinor-gjesteboka.vercel.app/api/login`, "POST", formData);
 
     if (response.status === 200) {
       window.localStorage.setItem("name", response.data.name);

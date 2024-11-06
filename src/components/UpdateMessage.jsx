@@ -29,7 +29,7 @@ export default function UpdateMessage({ message, setShowUpdateForm }) {
       data.append("image", formData.newImage[0]);
     }
 
-    const response = await fetchApi(`http://localhost:3000/api/messages/${message._id}`, "PUT", data);
+    const response = await fetchApi(`https://mathildeelinor-gjesteboka.vercel.app/api/messages/${message._id}`, "PUT", data);
 
     if (response.status === 200) {
       setShowUpdateForm(false);

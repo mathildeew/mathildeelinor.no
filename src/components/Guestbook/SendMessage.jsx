@@ -29,7 +29,7 @@ export default function GuestBookForm() {
       data.append("image", formData.image[0]);
     }
 
-    const response = await fetchApi(`http://localhost:3000/api/messages/`, "POST", data);
+    const response = await fetchApi(`https://mathildeelinor-gjesteboka.vercel.app/api/messages/`, "POST", data);
 
     if (response.status === 201) {
       await refreshMessages();
@@ -38,7 +38,7 @@ export default function GuestBookForm() {
   };
 
   return (
-    <section className="w-full">
+    <section className="w-full max-w-lg mx-auto">
       <form className="w-full flex flex-col gap-6 px-2 pt-4 pb-10" onSubmit={handleSubmit(onSubmit)}>
         <TextareaField label="Melding" register={register} name="message" rows="2" errors={errors} />
 
