@@ -20,7 +20,7 @@ export function LazyLoadImage({ src, alt }) {
   };
 
   return (
-    <div ref={imgRef} className="w-full h-96 bg-primary bg-opacity-30 flex items-center justify-center transition-all duration-500">
+    <div ref={imgRef} className="w-96 h-96 bg-primary bg-opacity-30 transition-all duration-500">
       {isVisible && <img src={`https://mathildeelinor-gjesteboka.vercel.app/api/messages/image/${src}`} alt={alt} className={`w-full max-h-96 object-cover transition-all duration-500 ${isLoading ? "opacity-0" : "opacity-100"}`} onLoad={handleImageLoad} />}
     </div>
   );
