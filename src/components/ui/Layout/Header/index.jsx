@@ -5,9 +5,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { NavLink } from "./NavLink";
+import { client } from "../../../../api/sanity-utils";
+import apiQueries from "../../../../api/apiQueries";
 
 export default function Header() {
   const [showMenu, setShowMenu] = useState(false);
+  const [data, setData] = useState([]);
 
   function hideOnScroll() {
     if (window.scrollY > 3) {
@@ -19,6 +22,16 @@ export default function Header() {
     window.addEventListener("scroll", hideOnScroll);
   });
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const info = await client.fetch(apiQueries().constants);
+      setData(info);
+    };
+    fetchData();
+  }, []);
+
+  console.log(data);
+
   return (
     <header className="w-full max-w-900 h-full flex justify-end mx-auto mb-16">
       <m.nav initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8, duration: 0.5, ease: "easeInOut" }} className="md-900:relative">
@@ -28,7 +41,7 @@ export default function Header() {
           <div className="pt-32 pr-8 z-30 flex flex-col gap-16 ">
             <div className="text-end flex flex-col gap-5">
               <NavLink to={"/"} text={"Hjem"} regular={true} />
-              <NavLink to={"/dist/CV_MathildeElinor.pdf"} target={"_blank"} text={"CV"} regular={true} />
+              <NavLink to={data.cv} target={"_blank"} text={"CV"} regular={true} />
             </div>
 
             <div className="text-end flex flex-col justify-end gap-4 ">
