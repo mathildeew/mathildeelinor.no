@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
-import UpdateMessage from "../UpdateMessage";
+import UpdateMessage from "./UpdateMessage";
 
 export const GuestBookMessage = ({ message, userName, setDisplayedMessages, displayedMessages, showUpdateForm, setShowUpdateForm, toggleUpdateForm, activeMenuId, setActiveMenuId, handleDelete }) => (
   <div key={message._id} className="w-full border border-primary px-2 pt-8 pb-4 relative md:w-[500px]">

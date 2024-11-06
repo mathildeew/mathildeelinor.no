@@ -1,11 +1,11 @@
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { getErrorMessage } from "../utils/getErrorMessage";
-import useApi from "../hooks/useApi";
-import { TextareaField } from "./Guestbook/Forms/TextareaField";
-import { ErrorMessage } from "./Guestbook/Forms/ErrorMessage";
-import { useMessages } from "./Guestbook/Context/MessageContext";
+import { getErrorMessage } from "../../utils/getErrorMessage";
+import useApi from "../../hooks/useApi";
+import { TextareaField } from "./Forms/TextareaField";
+import { ErrorMessage } from "./Forms/ErrorMessage";
+import { useMessages } from "./Context/MessageContext";
 
 const schema = yup.object({
   newMessage: yup.string().notRequired(),
