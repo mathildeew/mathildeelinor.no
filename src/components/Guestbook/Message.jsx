@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
 import UpdateMessage from "./UpdateMessage";
+import { LazyLoadImage } from "./LazyLoadImage";
 
 export const GuestBookMessage = ({ message, userName, setDisplayedMessages, displayedMessages, showUpdateForm, setShowUpdateForm, toggleUpdateForm, activeMenuId, setActiveMenuId, handleDelete }) => (
   <div key={message._id} className="w-full border border-primary px-2 pt-8 pb-4 relative md:w-[500px]">
@@ -32,7 +33,8 @@ export const GuestBookMessage = ({ message, userName, setDisplayedMessages, disp
 
     {showUpdateForm[message._id] && <UpdateMessage message={message} setDisplayedMessages={setDisplayedMessages} displayedMessages={displayedMessages} setShowUpdateForm={setShowUpdateForm} />}
 
-    {message.image && <img src={`https://mathildeelinor-gjesteboka.vercel.app/api/messages/image/${message.image}`} alt={`${message.user.name} sitt bilde`} className="w-full max-h-96 object-cover" />}
+    {message.image && <LazyLoadImage src={message.image} alt={`${message.user.name} sitt bilde`} />}
+    {/* // <img src={`https://mathildeelinor-gjesteboka.vercel.app/api/messages/image/${message.image}`} alt={`${message.user.name} sitt bilde`} className="w-full max-h-96 object-cover" />} */}
     <div className="flex flex-col gap-4">
       <p>{message.message}</p>
       <div className="flex items-center justify-between">
